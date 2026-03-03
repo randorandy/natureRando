@@ -18,6 +18,7 @@ class GameOptions:
     fill_choice: str
     can: list = field(default_factory=lambda: [])
     seed: int = field(default_factory=lambda: random.randint(0, 9999999))
+    visibility: bool = True
 
 
 @dataclass
@@ -26,6 +27,7 @@ class Game:
     options: GameOptions
     logic: Type[LogicInterface]
     all_locations: dict[str, Location]
+    visibility: bool
     area_rando: bool
     connections: list[tuple[AreaDoor, AreaDoor]]
     item_placement_spoiler: str = ""
