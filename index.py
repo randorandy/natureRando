@@ -62,6 +62,7 @@ def roll2(params_str: str) -> None:
         logic=Expert,
         fill_choice=params["fill_choice"],
         can=params["can"],
+        bool(params["visibility"])
     )
     print(options)
 
@@ -70,7 +71,7 @@ def roll3() -> bool:
     global game
     global options
     print("roll3 initiated")
-    #assert options
+    assert options
     game = generate(options)
     return all(not (loc["item"] is None) for loc in game.all_locations.values())
 
@@ -86,3 +87,9 @@ def roll4() -> None:
         js.spoiler_text = get_spoiler(game)
     else:
         js.modified_rom_data = ""
+
+
+js.python_roll1_function = roll1
+js.python_roll2_function = roll2
+js.python_roll3_function = roll3
+js.python_roll4_function = roll4
