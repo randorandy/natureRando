@@ -84,9 +84,10 @@ function setup_roll_button() {
     const roll_button = document.getElementById("roll-button");
     roll_button.addEventListener("click", async () => {
         const visibility_box = document.getElementById("visibility");
-        const activated_trick_names = [];
+        console.log("Found visibility: ",visibility_box);
         
         const fill_select = document.getElementById("fill");
+        console.log("Found Fill: ",fill_select);
 
         const params = {
             "visibility": visibility_box.checked,
@@ -110,9 +111,9 @@ function setup_roll_button() {
             roll_button.disabled = false;
             return;
         }
-        await sleep(0.05)
+        await sleep(0.05);
         python_roll2_function(JSON.stringify(params));
-        await sleep(0.05)
+        await sleep(0.05);
         const roll3_success = python_roll3_function();
         if (! roll3_success) {
             console.log("roll3 failed");
