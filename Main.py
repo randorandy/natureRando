@@ -63,7 +63,7 @@ def Main(options: GameOptions, romWriter: Optional[RomWriter] = None) -> None:
     rom_name = write_rom(game)
     write_spoiler_file(game, rom_name)
 
-def generate(options: dict) -> Game:
+def generate(options: GameOptions) -> Game:
     areaA = ""
 
     # hudFlicker=""
@@ -84,6 +84,7 @@ def generate(options: dict) -> Game:
     game = Game(options,
                 logic,
                 csvdict,
+                options.visibility,
                 areaA == "A",
                 VanillaAreas())
     while not seedComplete :
