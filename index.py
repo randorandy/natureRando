@@ -62,8 +62,7 @@ def roll2(params_str: str) -> None:
         logic=Expert,
         fill_choice=params["fill_choice"],
         can=params["can"],
-        bool(params["visibility"])
-    )
+        bool(params["visibility"]))
     print(options)
 
 
