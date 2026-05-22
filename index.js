@@ -106,7 +106,7 @@ function setup_roll_button() {
         roll_button.disabled = true;
         const status_div = document.getElementById("status");
         status_div.innerText = "rolling...";
-        await sleep(0.05);
+        await sleep(0.1);
         //const python_roll1_function = pyscript.interpreter.globals.get('roll1');
         //const python_roll2_function = pyscript.interpreter.globals.get('roll2');
         //const python_roll3_function = pyscript.interpreter.globals.get('roll3');
@@ -118,9 +118,9 @@ function setup_roll_button() {
             roll_button.disabled = false;
             return;
         }
-        await sleep(0.05);
+        await sleep(0.1);
         python_roll2_function(JSON.stringify(params));
-        await sleep(0.05);
+        await sleep(0.1);
         const roll3_success = python_roll3_function();
         if (! roll3_success) {
             console.log("roll3 failed");
@@ -128,9 +128,9 @@ function setup_roll_button() {
             roll_button.disabled = false;
             return;
         }
-        await sleep(0.05);
+        await sleep(0.1);
         python_roll4_function();
-        await sleep(0.01);
+        await sleep(0.1);
 
         if (modified_rom_data.length) {
             await sleep(0.05);
