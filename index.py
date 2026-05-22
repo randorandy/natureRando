@@ -17,6 +17,7 @@ Element: Any  # pyscript built-in
 
 class WebParams(TypedDict):
     fill: Literal["D", "MM"]
+    visibility: bool
 
 
 # the roll process is divided up to make the ui more responsive,
@@ -59,10 +60,9 @@ def roll2(params_str: str) -> None:
 
     # romWriter = RomWriter.fromBlankIps()  # TODO
     options = GameOptions(
-        logic=Expert,
-        fill_choice=params["fill_choice"],
-        can=params["can"],
-        bool(params["visibility"]))
+        fill_choice=params["fill"],
+        #seed=0,
+        visibility=params["visibility"])
     print(options)
 
 
