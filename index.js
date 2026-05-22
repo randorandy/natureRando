@@ -29,12 +29,20 @@ function read_input_rom(file) {
             // binary data
             console.log(e.target.result.length);
             console.log(e.target.result.substring(0, 64));
-            const expected_begin = "data:application/octet-stream;base64,";
+            const expected_begin = "data:application/"; //const expected_begin = "data:application/octet-stream;base64,";
             if (e.target.result.substring(0, expected_begin.length) === expected_begin) {
-                rom_data = e.target.result.substring(expected_begin.length);
+                const start_index = e.target.result.indexOf(";base64,") + 8;
+                if (start_index >= expected_begin.length && start_index < 150) {
+                    rom_data = e.target.result.substring(start_index);
+                }
+                
+                //rom_data = e.target.result.substring(expected_begin.length);
+                else {
+                    console.error(`unexpected file encoding: ${e.target.result.substring(0, 160)}`);
+                }
             }
             else {
-                console.error(`unexpected file encoding: ${e.target.result.substring(0, 64)}`);
+                    console.error(`unexpected file encoding: ${e.target.result.substring(0, 64)}`);
             }
         };
         reader.onerror = function(e) {
@@ -91,8 +99,7 @@ function setup_roll_button() {
 
         const params = {
             "visibility": visibility_box.checked,
-            "fill_choice": fill_select.value,
-            "can": [],
+            "fill_choice": fill_select.value
         };
         console.log(params)
 
@@ -100,10 +107,10 @@ function setup_roll_button() {
         const status_div = document.getElementById("status");
         status_div.innerText = "rolling...";
         await sleep(0.05);
-        const python_roll1_function = pyscript.interpreter.globals.get('roll1');
-        const python_roll2_function = pyscript.interpreter.globals.get('roll2');
-        const python_roll3_function = pyscript.interpreter.globals.get('roll3');
-        const python_roll4_function = pyscript.interpreter.globals.get('roll4');
+        //const python_roll1_function = pyscript.interpreter.globals.get('roll1');
+        //const python_roll2_function = pyscript.interpreter.globals.get('roll2');
+        //const python_roll3_function = pyscript.interpreter.globals.get('roll3');
+        //const python_roll4_function = pyscript.interpreter.globals.get('roll4');
         const roll1_success = python_roll1_function();
         if (! roll1_success) {
             console.log("roll1 failed");
