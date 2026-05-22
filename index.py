@@ -16,7 +16,7 @@ Element: Any  # pyscript built-in
 
 
 class WebParams(TypedDict):
-    fill: Literal["D", "MM"]
+    fill_choice: Literal["D", "MM"]
     visibility: bool
 
 
@@ -60,7 +60,7 @@ def roll2(params_str: str) -> None:
 
     # romWriter = RomWriter.fromBlankIps()  # TODO
     options = GameOptions(
-        fill_choice=params["fill"],
+        fill_choice=params["fill_choice"],
         #seed=0,
         visibility=params["visibility"])
     print(options)
