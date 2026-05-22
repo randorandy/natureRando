@@ -60,9 +60,9 @@ def roll2(params_str: str) -> None:
 
     # romWriter = RomWriter.fromBlankIps()  # TODO
     options = GameOptions(
-        #fill_choice=params["fill_choice"],
+        fill_choice=params["fill_choice"],
         #seed=0,
-        #visibility=params["visibility"]
+        visibility=params["visibility"]
         )
     print(options)
 
