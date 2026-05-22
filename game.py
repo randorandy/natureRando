@@ -15,7 +15,7 @@ def door_factory() -> dict[AreaDoor, Union[Item, LogicShortcut]]:
 
 @dataclass
 class GameOptions:
-    fill_choice: str = "D"
+    fill_choice: str
     seed: int = field(default_factory=lambda: random.randint(0, 9999999))
     visibility: bool = True
     

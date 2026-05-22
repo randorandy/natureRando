@@ -64,7 +64,7 @@ def roll2(params_str: str) -> None:
         #seed=0,
         visibility=params["visibility"]
         )
-    print(options)
+    print(67,options)
 
 
 def roll3() -> bool:
